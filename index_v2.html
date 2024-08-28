@@ -1,45 +1,179 @@
-<!--  ----------------------------------------------------------------------  -->
-<!--  NOTE: Please add the following <META> element to your page <HEAD>.      -->
-<!--  If necessary, please modify the charset parameter to specify the        -->
-<!--  character set of your HTML page.                                        -->
-<!--  ----------------------------------------------------------------------  -->
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>שאלון הצטרפות לפורום מנהלי גמחי"ם</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+        h2 {
+            color: #5c5c8a;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #333;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        textarea {
+            resize: vertical;
+            height: 80px;
+        }
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+        .radio-group {
+            text-align: right;
+            direction: rtl;
+        }
+        .progress-bar {
+            width: 100%;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .progress {
+            height: 20px;
+            background-color: #5c5c8a;
+            border-radius: 5px;
+            width: 10%;
+            transition: width 0.3s;
+        }
+        .submit-btn {
+            background-color: #5c5c8a;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .submit-btn:hover {
+            background-color: #494973;
+        }
+        .notes {
+            font-size: 14px;
+            color: #666;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
 
-<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
-<script src="https://www.google.com/recaptcha/api.js"></script>
+<div class="container">
+    <h2>שאלון הצטרפות לפורום מנהלי גמחי"ם</h2>
+
+    <div class="progress-bar">
+        <div class="progress" id="progress"></div>
+    </div>
+
+    <form id="gmach-form">
+        <label for="email">אימייל*</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="gmach-name">שם הגמ"ח*</label>
+        <input type="text" id="gmach-name" name="gmach-name" required>
+
+        <label for="city">עיר*</label>
+        <input type="text" id="city" name="city" required>
+
+        <label for="address">כתובת הגמ"ח</label>
+        <input type="text" id="address" name="address">
+
+        <label>מבנה הגמ"ח*</label>
+        <div class="radio-group">
+            <label><input type="radio" name="gmach-type" value="רגיל" required> רגיל</label>
+            <label><input type="radio" name="gmach-type" value="חברים"> חברים</label>
+            <label><input type="radio" name="gmach-type" value="אחר"> אחר</label>
+        </div>
+
+        <label for="gmach-email">כתובת המייל של הגמ"ח</label>
+        <input type="email" id="gmach-email" name="gmach-email">
+
+        <label>ותק הגמ"ח*</label>
+        <div class="radio-group">
+            <label><input type="radio" name="gmach-age" value="עד 5 שנים" required> עד 5 שנים</label>
+            <label><input type="radio" name="gmach-age" value="5-10 שנים"> 5-10 שנים</label>
+            <label><input type="radio" name="gmach-age" value="10-20 שנים"> 10-20 שנים</label>
+            <label><input type="radio" name="gmach-age" value="יותר מ20 שנים"> יותר מ20 שנים</label>
+        </div>
+
+        <label for="rep1-name">שם נציג 1*</label>
+        <input type="text" id="rep1-name" name="rep1-name" required>
+
+        <label for="rep1-phone">נייד נציג 1*</label>
+        <input type="tel" id="rep1-phone" name="rep1-phone" required>
+
+        <label for="rep1-role">תפקיד נציג 1*</label>
+        <input type="text" id="rep1-role" name="rep1-role" required>
+
+        <label for="rep2-name">שם נציג 2</label>
+        <input type="text" id="rep2-name" name="rep2-name">
+
+        <label for="rep2-phone">נייד נציג 2</label>
+        <input type="tel" id="rep2-phone" name="rep2-phone">
+
+        <label for="rep2-role">תפקיד נציג 2</label>
+        <input type="text" id="rep2-role" name="rep2-role">
+
+        <label for="rep3-name">שם נציג 3</label>
+        <input type="text" id="rep3-name" name="rep3-name">
+
+        <label for="rep3-phone">נייד נציג 3</label>
+        <input type="tel" id="rep3-phone" name="rep3-phone">
+
+        <label for="rep3-role">תפקיד נציג 3</label>
+        <input type="text" id="rep3-role" name="rep3-role">
+
+        <label for="notes">הערות</label>
+        <textarea id="notes" name="notes"></textarea>
+
+        <label for="topics">?איזה נושאים רצוי לקדם באמצעות איגוד הגמחים</label>
+        <textarea id="topics" name="topics"></textarea>
+
+        <button type="submit" class="submit-btn">שלח</button>
+    </form>
+
+    <div class="notes">
+        <p>כוכבית (*) מציינת שאלה שאי אפשר לדלג עליה</p>
+    </div>
+</div>
+
 <script>
- function timestamp() { var response = document.getElementById("g-recaptcha-response"); if (response == null || response.value.trim() == "") {var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);elems["ts"] = JSON.stringify(new Date().getTime());document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500); 
+    document.getElementById('gmach-form').addEventListener('input', function() {
+        const totalFields = document.querySelectorAll('input, textarea').length;
+        const filledFields = document.querySelectorAll('input:valid, textarea:valid').length;
+        const progress = Math.min((filledFields / totalFields) * 100, 100);
+        document.getElementById('progress').style.width = progress + '%';
+    });
 </script>
 
-<!--  ----------------------------------------------------------------------  -->
-<!--  NOTE: Please add the following <FORM> element to your page.             -->
-<!--  ----------------------------------------------------------------------  -->
-
-<form action="https://test.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DKK000000H062" method="POST">
-
-<input type=hidden name='captcha_settings' value='{"keyname":"FormToLead","fallback":"true","orgId":"00DKK000000H062","ts":""}'>
-<input type=hidden name="oid" value="00DKK000000H062">
-<input type=hidden name="retURL" value="http://google/sucsess">
-
-<!--  ----------------------------------------------------------------------  -->
-<!--  NOTE: These fields are optional debugging elements. Please uncomment    -->
-<!--  these lines if you wish to test in debug mode.                          -->
-<!--  <input type="hidden" name="debug" value=1>                              -->
-<!--  <input type="hidden" name="debugEmail" value="mordechyi.l@gmail.com">   -->
-<!--  ----------------------------------------------------------------------  -->
-
-<label for="first_name">First Name</label><input  id="first_name" maxlength="40" name="first_name" size="20" type="text" /><br>
-
-<label for="last_name">Last Name</label><input  id="last_name" maxlength="80" name="last_name" size="20" type="text" /><br>
-
-<label for="email">Email</label><input  id="email" maxlength="80" name="email" size="20" type="text" /><br>
-
-<label for="company">Company</label><input  id="company" maxlength="40" name="company" size="20" type="text" /><br>
-
-<label for="city">City</label><input  id="city" maxlength="40" name="city" size="20" type="text" /><br>
-
-<label for="state">State/Province</label><input  id="state" maxlength="20" name="state" size="20" type="text" /><br>
-
-<div class="g-recaptcha" data-sitekey="6LdlFzEqAAAAADZSrumXshxrLxlxj2Do0Ew5OSAg"></div><br>
-<input type="submit" name="submit">
-
-</form>
+</body>
+</html>
